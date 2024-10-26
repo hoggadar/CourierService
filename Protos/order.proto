@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "CourierService.Protos";
+
+package order;
+
+service Order {
+    rpc GetAllOrders(GetAllOrdersRequest) returns (GetAllOrdersResponse);
+    rpc CreateOrder(CreateOrderRequest) returns (OrderResponse);
+    rpc DeleteOrder(DeleteOrderRequest) returns (OrderResponse);
+}
+
+message OrderResponse {
+    int32 id = 1;
+    string desc = 2;
+    int32 price = 3;
+    int32 overPrice = 4;
+    string date = 5;
+    int32 courierId = 6;
+}
+
+message GetAllOrdersRequest {}
+
+message GetAllOrdersResponse {
+    repeated OrderResponse orders = 1;
+}
+
+message CreateOrderRequest {
+    string desc = 1;
+    int32 price = 2;
+    int32 overPrice = 3;
+    int32 courierId = 4;
+}
+
+message DeleteOrderRequest {
+    int32 id = 1;
+}

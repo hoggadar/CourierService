@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "CourierService.Protos";
+
+package couriers;
+
+service Couriers {
+    rpc GetAllCouriers(GetAllCouriersRequest) returns (GetAllCouriersResponse);
+    rpc CreateCourier(CreateCourierRequest) returns (CourierResponse);
+}
+
+message CourierResponse {
+    int32 id = 1;
+    string type = 2;
+    string fullName = 3;
+    int32 dist = 4;
+}
+
+message GetAllCouriersRequest {}
+
+message GetAllCouriersResponse {
+    repeated CourierResponse couriers = 1;
+}
+
+message CreateCourierRequest {
+    string fullName = 1;
+    int32 dist = 2;
+    string type = 3;
+}
